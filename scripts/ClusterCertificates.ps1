@@ -1,11 +1,12 @@
 
-$location = 'eastus2'
+Param(
+  [string]
+  $location = "eastus2"
+)
+
 $resourceGroupLocation = "eastus2"
-
 $resourceGroupName = "fabric-keyvaults"
-
 $keyVaultName = "ndcbing-$location-kv"
-
 $dnsName = "$location.ndcbing.com"
 $localCertPath = "."
 $newCertName = "$dnsName"
