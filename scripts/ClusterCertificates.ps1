@@ -22,7 +22,7 @@ try
 {
     $existingKeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName
     $resourceId = $existingKeyVault.ResourceId
-    Write-Host "Using existing vault $VaultName in $($existingKeyVault.Location)"
+    Write-Host "Using existing vault $KeyVaultName in $($existingKeyVault.Location)"
 }
 catch
 {
@@ -31,11 +31,11 @@ catch
 if(!$existingKeyVault)
 {
     Write-Host "Creating new vault $VaultName in $location"
-    $newKeyVault = New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName -Location $Location -EnabledForDeployment
+    $newKeyVault = New-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $Location -EnabledForDeployment
     $resourceId = $newKeyVault.ResourceId
 }
 
-Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ObjectId "d64ab969-c499-48fe-8919-1b537990d064" -PermissionsToKeys all -PermissionsToSecrets all -PermissionsToCertificates all
+Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ObjectId "76342cec-4b6d-4a01-9b2c-da4d033e76ea" -PermissionsToKeys all -PermissionsToSecrets all -PermissionsToCertificates all
 
 Import-Module "$PSScriptRoot\..\vendor\chackdan\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
