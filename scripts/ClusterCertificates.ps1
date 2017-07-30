@@ -11,12 +11,13 @@ $dnsName = "$location.ndcbing.com"
 $localCertPath = "."
 $newCertName = "$dnsName"
 
-$azureContext = Get-AzureRmContext
+$azureRmContext = Get-AzureRmContext
+$subscriptionId = $azureRmContext.Subscription.SubscriptionId
 
 Import-Module "$PSScriptRoot\..\vendor\chackdan\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation -Force
 
-New-AzureRmKeyVault -ResourceGroupName $resourceGroupName -VaultName $keyVaultName -Location $location -EnabledForDeployment
+New-AzureRmKeyVault -ResourceGroupName $resourceGroupName -VaultName $keyVaultName -Location $location -EnabledForDeployment -Force
 
-Invoke-AddCertToKeyVault -SubscriptionId $azureContext.SubscriptionId -ResourceGroupName $resourceGroupName -Location $location -VaultName $keyVaultName -CertificateName $newCertName -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
+Invoke-AddCertToKeyVault -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -Location $location -VaultName $keyVaultName -CertificateName $newCertName -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
