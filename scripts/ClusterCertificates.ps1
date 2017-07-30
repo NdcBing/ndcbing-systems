@@ -1,7 +1,7 @@
-
+[CmdletBinding()]
 Param(
-  [string]
-  $location = "eastus2"
+  [Parameter(Mandatory=$False)]
+  [string]$location = "eastus2"
 )
 
 $resourceGroupLocation = "eastus2"
@@ -13,7 +13,7 @@ $newCertName = "$dnsName"
 
 $azureContext = Get-AzureRmContext
 
-Import-Module "..\vendor\chackdan\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+Import-Module "$PSScriptRoot\..\vendor\chackdan\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
 New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
 
