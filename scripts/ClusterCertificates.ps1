@@ -1,10 +1,21 @@
 
-
-
 $location = 'eastus2'
-$resourceGroupName = "$location-fabric-keyvault"
-$keyVaultName = "$location-fabric-keyvault"
+$resourceGroupLocation = "eastus2"
 
-New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+$resourceGroupName = "fabric-keyvaults"
 
-New-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -Location $location -EnabledForDeployment
+$keyVaultName = "ndcbing-$location-kv"
+
+$dnsName = "$location.ndcbing.com"
+$localCertPath = "."
+$newCertName = "$dnsName"
+
+$azureContext = Get-AzureRmContext
+
+Import-Module "..\vendor\chackdan\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $resourceGroupLocation
+
+New-AzureRmKeyVault -ResourceGroupName $resourceGroupName -VaultName $keyVaultName -Location $location -EnabledForDeployment
+
+Invoke-AddCertToKeyVault -SubscriptionId $azureContext.SubscriptionId -ResourceGroupName $resourceGroupName -Location $location -VaultName $keyVaultName -CertificateName $newCertName -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
