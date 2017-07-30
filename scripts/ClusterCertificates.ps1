@@ -35,7 +35,7 @@ if(!$existingKeyVault)
     $resourceId = $newKeyVault.ResourceId
 }
 
-Set-AzureKeyVaultAccessPolicy -VaultName $VaultName -ObjectId "d64ab969-c499-48fe-8919-1b537990d064" -PermissionsToKeys all -PermissionsToSecrets all -PermissionsToCertificates all
+Set-AzureRmKeyVaultAccessPolicy -VaultName $VaultName -ObjectId "d64ab969-c499-48fe-8919-1b537990d064" -PermissionsToKeys all -PermissionsToSecrets all -PermissionsToCertificates all
 
 Import-Module "$PSScriptRoot\..\vendor\chackdan\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
