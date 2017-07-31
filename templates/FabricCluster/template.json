@@ -119,7 +119,7 @@
         },
         "vmImageSku": {
             "type": "string",
-            "defaultValue": "2012-R2-Datacenter"
+            "defaultValue": "2016-Datacenter"
         },
         "vmImageVersion": {
             "type": "string",

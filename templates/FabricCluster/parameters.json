@@ -1,0 +1,78 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "value": "ndcbing2"
+        },
+        "clusterLocation": {
+            "value": "eastus2"
+        },
+        "computeLocation": {
+            "value": "eastus2"
+        },
+        "adminUserName": {
+            "value": "ndcbingadmin"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "nicName": {
+            "value": "NIC-ndcbing2"
+        },
+        "publicIPAddressName": {
+            "value": "ndcbing2-PubIP"
+        },
+        "dnsName": {
+            "value": "ndcbing2"
+        },
+        "virtualNetworkName": {
+            "value": "VNet-ndcbing2"
+        },
+        "lbName": {
+            "value": "LB-ndcbing2"
+        },
+        "lbIPName": {
+            "value": "LBIP-ndcbing2"
+        },
+        "applicationDiagnosticsStorageAccountName": {
+            "value": "sfdgndcbing26824"
+        },
+        "supportLogStorageAccountName": {
+            "value": "sflogsndcbing29106"
+        },
+        "sourceVaultValue": {
+            "value": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-eastus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-eastus2-kv"
+        },
+        "certificateUrlValue": {
+            "value": "https://ndcbing-eastus2-kv.vault.azure.net/secrets/eastus2-ndcbing-com/81784e54b8884505953c350361ad61d3"
+        },
+        "certificateThumbprint": {
+            "value": "32F282973281BF97A918AAE3163643952DAF4B2A"
+        },
+        "vmImageSku": {
+            "value": "2016-Datacenter"
+        },
+        "nt0ephemeralStartPort": {
+            "value": 49152
+        },
+        "nt0ephemeralEndPort": {
+            "value": 65534
+        },
+        "nt0applicationStartPort": {
+            "value": 20000
+        },
+        "nt0applicationEndPort": {
+            "value": 30000
+        },
+        "nt0fabricTcpGatewayPort": {
+            "value": 19000
+        },
+        "nt0fabricHttpGatewayPort": {
+            "value": 19080
+        },
+        "nt0reverseProxyEndpointPort": {
+            "value": 19081
+        }
+    }
+}
