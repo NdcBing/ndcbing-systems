@@ -26,5 +26,17 @@
             "secretName": "ClusterCert-CertificateThumbprint"
           }
       },
+      "clusterLocation": {
+        "value": "eastus2"
+      },
+      "computeLocation": {
+        "value": "eastus2"
+      },
+      "adminPassword": {
+        "value": "Secret5!"
+      },
+      "dnsName" : {
+        "value": "ndcbing"
+      }
     }
 }

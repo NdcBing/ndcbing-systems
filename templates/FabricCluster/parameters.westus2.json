@@ -26,5 +26,17 @@
             "secretName": "ClusterCert-CertificateThumbprint"
           }
       },
+      "clusterLocation": {
+        "value": "westus2"
+      },
+      "computeLocation": {
+        "value": "westus2"
+      },
+      "adminPassword": {
+        "value": "Secret5!"
+      },
+      "dnsName" : {
+        "value": "ndcbing"
+      }
     }
 }
