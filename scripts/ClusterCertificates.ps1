@@ -40,4 +40,10 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ServicePrincipalName "
 
 Import-Module "$PSScriptRoot\..\vendor\chackdan\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
 
-Invoke-AddCertToKeyVault -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -Location $Location -VaultName $KeyVaultName -CertificateName $NewCertName -CreateSelfSignedCertificate -DnsName $DnsName -OutputPath $LocalCertPath -Password $Password
+$ClusterCert = Invoke-AddCertToKeyVault -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName -Location $Location -VaultName $KeyVaultName -CertificateName $NewCertName -CreateSelfSignedCertificate -DnsName $DnsName -OutputPath $LocalCertPath -Password $Password
+
+$ClusterCert
+
+Set-AzureKeyVaultSecret -VaultName $KeyVaultName -Name "ClusterCert-CertificateThumbprint" -SecretValue (ConvertTo-SecureString -String $ClusterCert.CertificateThumbprint -AsPlainText -Force)
+Set-AzureKeyVaultSecret -VaultName $KeyVaultName -Name "ClusterCert-SourceVault" -SecretValue (ConvertTo-SecureString -String $ClusterCert.SourceVault -AsPlainText -Force)
+Set-AzureKeyVaultSecret -VaultName $KeyVaultName -Name "ClusterCert-CertificateURL" -SecretValue (ConvertTo-SecureString -String $ClusterCert.CertificateURL -AsPlainText -Force)

@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "sourceVaultValue": {
+        "reference": {
+            "keyVault": {
+              "id": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-westus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-westus2-kv"
+            },
+            "secretName": "ClusterCert-SourceVault"
+          }
+      },
+      "certificateUrlValue": {
+        "reference": {
+            "keyVault": {
+              "id": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-westus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-westus2-kv"
+            },
+            "secretName": "ClusterCert-CertificateURL"
+          }
+      },
+      "certificateThumbprint": {
+        "reference": {
+            "keyVault": {
+              "id": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-westus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-westus2-kv"
+            },
+            "secretName": "ClusterCert-CertificateThumbprint"
+          }
+      },
+    }
+}
