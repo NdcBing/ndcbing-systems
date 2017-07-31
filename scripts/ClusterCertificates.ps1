@@ -30,7 +30,7 @@ catch
 
 if(!$existingKeyVault)
 {
-    Write-Host "Creating new vault $VaultName in $location"
+    Write-Host "Creating new vault $KeyVaultName in $location"
     $newKeyVault = New-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $Location -EnabledForDeployment -EnabledForTemplateDeployment
     $resourceId = $newKeyVault.ResourceId
 }
