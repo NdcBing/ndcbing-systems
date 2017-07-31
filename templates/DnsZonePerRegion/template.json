@@ -1,0 +1,47 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "dnsZone": {
+            "type": "String"
+        },
+        "clusterLocation": {
+            "type": "String"
+        },
+        "clusterName":{
+          "type":"String",
+          "defaultValue": "ndcbing"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/dnszones",
+            "name": "[parameters('dnsZone')]",
+            "apiVersion": "2016-04-01",
+            "location": "global",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "maxNumberOfRecordSets": 5000,
+                "numberOfRecordSets": 3
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.Network/dnszones/CNAME",
+            "name": "[concat(parameters('dnsZone'), parameters('clusterLocation'))]",
+            "apiVersion": "2016-04-01",
+            "scale": null,
+            "properties": {
+                "TTL": 60,
+                "CNAMERecord": {
+                    "cname": "[concat(parameters('clusterName'), '.', parameters('clusterLocation'), '.cloudapp.azure.com')]"
+                }
+            },
+            "dependsOn": [
+              "[resourceId('Microsoft.Network/dnszones', parameters('dnsZone'))]"
+            ]
+        }
+    ]
+}

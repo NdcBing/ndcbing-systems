@@ -1,0 +1,72 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "dnsZone": {
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+      {
+          "type": "Microsoft.Network/dnszones",
+          "name": "[parameters('dnsZone')]",
+          "apiVersion": "2016-04-01",
+          "location": "global",
+          "tags": {},
+          "scale": null,
+          "properties": {
+              "maxNumberOfRecordSets": 5000,
+              "numberOfRecordSets": 3
+          },
+          "dependsOn": []
+      },
+      {
+          "type": "Microsoft.Network/dnszones/NS",
+          "name": "[parameters('dnsZone')]/@",
+          "apiVersion": "2016-04-01",
+          "scale": null,
+          "properties": {
+              "TTL": 172800,
+              "NSRecords": [
+                  {
+                      "nsdname": "ns1-03.azure-dns.com."
+                  },
+                  {
+                      "nsdname": "ns2-03.azure-dns.net."
+                  },
+                  {
+                      "nsdname": "ns3-03.azure-dns.org."
+                  },
+                  {
+                      "nsdname": "ns4-03.azure-dns.info."
+                  }
+              ]
+          },
+          "dependsOn": [
+              "[resourceId('Microsoft.Network/dnszones', parameters('dnsZone'))]"
+          ]
+      },
+      {
+          "type": "Microsoft.Network/dnszones/SOA",
+          "name": "[parameters('dnsZone')]/@",
+          "apiVersion": "2016-04-01",
+          "scale": null,
+          "properties": {
+              "TTL": 3600,
+              "SOARecord": {
+                  "email": "azuredns-hostmaster.microsoft.com",
+                  "expireTime": 2419200,
+                  "host": "ns1-03.azure-dns.com.",
+                  "minimumTTL": 300,
+                  "refreshTime": 3600,
+                  "retryTime": 300,
+                  "serialNumber": 1
+              }
+          },
+          "dependsOn": [
+              "[resourceId('Microsoft.Network/dnszones', parameters('dnsZone'))]"
+          ]
+      }
+    ]
+}
