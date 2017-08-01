@@ -30,7 +30,7 @@
         },
         {
             "type": "Microsoft.Network/dnszones/CNAME",
-            "name": "[concat(parameters('dnsZone'), parameters('clusterLocation'))]",
+            "name": "[concat(parameters('dnsZone'), '/', parameters('clusterLocation'))]",
             "apiVersion": "2016-04-01",
             "scale": null,
             "properties": {
