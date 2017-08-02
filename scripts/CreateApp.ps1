@@ -2,7 +2,7 @@ $tenantId = (Get-AzureRmContext).Subscription.TenantId
 $locations = @("westus2", "eastus2")
 $appName = "NDCBingProductionCluster"
 
-$ConfigObj = .\MicrosoftAzureServiceFabric-AADHelpers\SetupApplications.ps1 `
+$ConfigObj = & "$PSScriptRoot\MicrosoftAzureServiceFabric-AADHelpers\SetupApplications.ps1" `
     -TenantId $tenantId `
     -WebApplicationReplyUrl ( $locations | %{"https://$_.ndcbing.com/"} ) `
     -WebApplicationName $appName `

@@ -245,6 +245,15 @@
         "vmNodeType0Size": {
             "type": "string",
             "defaultValue": "Standard_D1_v2"
+        },
+        "clientApplication": {
+          "type":"string",
+        },
+        "clusterApplication": {
+          "type":"string",
+        },
+        "tenantId": {
+          "type":"string",
         }
     },
     "variables": {
@@ -720,9 +729,9 @@
             "properties": {
                 "addonFeatures": [],
                 "azureActiveDirectory": {
-                    "clientApplication": "19a82725-71b9-4781-8319-ff790bf235fa",
-                    "clusterApplication": "3ca95de8-c280-4115-99a1-661b9b1438e4",
-                    "tenantId": "d6229768-71c3-49c3-be46-5dd30cbddd44"
+                    "clientApplication": "[parameters('clientApplication')]",
+                    "clusterApplication": "[parameters('clusterApplication')]",
+                    "tenantId": "[parameters('tenantId')]"
                 },
                 "certificate": {
                     "thumbprint": "[parameters('certificateThumbprint')]",

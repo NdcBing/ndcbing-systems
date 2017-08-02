@@ -26,6 +26,30 @@
             "secretName": "ClusterCert-CertificateThumbprint"
           }
       },
+      "clientApplication": {
+        "reference": {
+            "keyVault": {
+              "id": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-westus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-westus2-kv"
+            },
+            "secretName": "NDCBingProductionCluster-ClientApplication"
+          }
+      },
+      "clusterApplication": {
+        "reference": {
+            "keyVault": {
+              "id": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-westus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-westus2-kv"
+            },
+            "secretName": "NDCBingProductionCluster-ClusterApplication"
+          }
+      },
+      "tenantId": {
+        "reference": {
+            "keyVault": {
+              "id": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-westus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-westus2-kv"
+            },
+            "secretName": "NDCBingProductionCluster-TenantId"
+          }
+      },
       "clusterLocation": {
         "value": "westus2"
       },
