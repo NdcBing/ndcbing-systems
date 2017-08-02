@@ -31,7 +31,7 @@
             "keyVault": {
               "id": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-westus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-westus2-kv"
             },
-            "secretName": "NDCBingProductionCluster-NativeClientAppId"
+            "secretName": "NDCBingProduction-NativeClientAppId"
           }
       },
       "clusterApplication": {
@@ -39,7 +39,7 @@
             "keyVault": {
               "id": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-westus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-westus2-kv"
             },
-            "secretName": "NDCBingProductionCluster-WebAppId"
+            "secretName": "NDCBingProduction-WebAppId"
           }
       },
       "tenantId": {
@@ -47,7 +47,7 @@
             "keyVault": {
               "id": "/subscriptions/8520af9f-3b43-453d-af79-3ef6c7fa956e/resourceGroups/ndcbing-westus2-kv/providers/Microsoft.KeyVault/vaults/ndcbing-westus2-kv"
             },
-            "secretName": "NDCBingProductionCluster-TenantId"
+            "secretName": "NDCBingProduction-TenantId"
           }
       },
       "clusterLocation": {
