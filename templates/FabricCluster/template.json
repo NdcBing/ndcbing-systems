@@ -247,13 +247,13 @@
             "defaultValue": "Standard_D1_v2"
         },
         "clientApplication": {
-          "type":"string",
+          "type":"string"
         },
         "clusterApplication": {
-          "type":"string",
+          "type":"string"
         },
         "tenantId": {
-          "type":"string",
+          "type":"string"
         }
     },
     "variables": {
