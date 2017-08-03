@@ -4,7 +4,7 @@ $appName = "NDCBingProduction"
 
 $ConfigObj = & "$PSScriptRoot\MicrosoftAzureServiceFabric-AADHelpers\SetupApplications.ps1" `
     -TenantId $tenantId `
-    -WebApplicationReplyUrl ( $locations | %{"https://$_.ndcbing.com/"} ) `
+    -WebApplicationReplyUrl ( $locations | %{"https://$_.ndcbing.com:19080/Explorer/index.html"} ) `
     -WebApplicationName "$($appName)_Cluster" `
     -NativeClientApplicationName "$($appName)_Client" `
     -WebApplicationUri "https://$appName"
