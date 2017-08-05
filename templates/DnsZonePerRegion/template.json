@@ -40,7 +40,22 @@
                 }
             },
             "dependsOn": [
-              "[resourceId('Microsoft.Network/dnszones', parameters('dnsZone'))]"
+                "[resourceId('Microsoft.Network/dnszones', parameters('dnsZone'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Network/dnszones/CNAME",
+            "name": "[concat(parameters('dnsZone'), '/*.', parameters('clusterLocation'))]",
+            "apiVersion": "2016-04-01",
+            "scale": null,
+            "properties": {
+                "TTL": 60,
+                "CNAMERecord": {
+                    "cname": "[concat(parameters('clusterName'), '.', parameters('clusterLocation'), '.cloudapp.azure.com')]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/dnszones', parameters('dnsZone'))]"
             ]
         }
     ]

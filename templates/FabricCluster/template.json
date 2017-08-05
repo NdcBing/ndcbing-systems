@@ -482,7 +482,8 @@
                             "intervalInSeconds": 5,
                             "numberOfProbes": 2,
                             "port": "[parameters('loadBalancedAppPort1')]",
-                            "protocol": "tcp"
+                            "protocol": "http",
+                            "requestPath": "~status"
                         }
                     },
                     {
