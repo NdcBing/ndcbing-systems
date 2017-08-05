@@ -1,0 +1,65 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "relativeName": {
+            "type": "string"
+        },
+        "serviceName": {
+            "type": "string"
+        },
+        "dnsName": {
+            "type": "string"
+        },
+        "trafficRoutingMethod": {
+            "type": "string",
+            "defaultValue": "Performance",
+            "allowedValues": [
+                "Performance",
+                "Weighted",
+                "Priority",
+                "Geographic"
+            ]
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2017-05-01",
+            "type": "Microsoft.Network/trafficmanagerprofiles",
+            "name": "[concat(parameters('serviceName'), '.', parameters('dnsName'))]",
+            "location": "global",
+            "properties": {
+                "trafficRoutingMethod": "[parameters('trafficRoutingMethod')]",
+                "dnsConfig": {
+                    "relativeName": "[parameters('relativeName')]",
+                    "ttl": "300"
+                },
+                "monitorConfig": {
+                    "protocol": "http",
+                    "port": "80",
+                    "path": "/~status"
+                },
+                "endpoints": [
+                  {
+                    "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                      "name": "[concat(parameters('serviceName'), '.westus2.', parameters('dnsName'))]",
+                      "properties": {
+                          "endpointStatus": "Enabled",
+                          "target": "[concat(parameters('serviceName'), '.westus2.', parameters('dnsName'))]",
+                          "endpointLocation": "westus2"
+                      }
+                  },
+                  {
+                      "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
+                      "name": "[concat(parameters('serviceName'), '.westus2.', parameters('dnsName'))]",
+                      "properties": {
+                          "endpointStatus": "Enabled",
+                          "target": "[concat(parameters('serviceName'), '.eastus2.', parameters('dnsName'))]",
+                          "endpointLocation": "eastus2"
+                      }
+                  }
+                ]
+            }
+        }
+    ]
+}
