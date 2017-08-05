@@ -44,7 +44,7 @@
               ]
           },
           "dependsOn": [
-              "[resourceId('Microsoft.Network/dnszones', parameters('dnsZone'))]"
+              "[parameters('dnsZone')]"
           ]
       },
       {
@@ -65,7 +65,7 @@
               }
           },
           "dependsOn": [
-              "[resourceId('Microsoft.Network/dnszones', parameters('dnsZone'))]"
+              "[parameters('dnsZone')]"
           ]
       }
     ]
