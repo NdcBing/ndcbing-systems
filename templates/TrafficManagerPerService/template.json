@@ -51,7 +51,7 @@
                   },
                   {
                       "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
-                      "name": "[concat(parameters('serviceName'), '.westus2.', parameters('dnsZone'))]",
+                      "name": "[concat(parameters('serviceName'), '.eastus2.', parameters('dnsZone'))]",
                       "properties": {
                           "endpointStatus": "Enabled",
                           "target": "[concat(parameters('serviceName'), '.eastus2.', parameters('dnsZone'))]",
