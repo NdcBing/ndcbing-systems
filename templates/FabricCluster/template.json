@@ -232,7 +232,7 @@
         },
         "nt0InstanceCount": {
             "type": "int",
-            "defaultValue": 5,
+            "defaultValue": 3,
             "metadata": {
                 "description": "Instance count for node type"
             }
@@ -781,7 +781,7 @@
                     }
                 ],
                 "provisioningState": "Default",
-                "reliabilityLevel": "Silver",
+                "reliabilityLevel": "Bronze",
                 "upgradeMode": "Manual",
                 "vmImage": "Windows"
             },
