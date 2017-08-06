@@ -8,7 +8,7 @@
         "serviceName": {
             "type": "string"
         },
-        "dnsName": {
+        "dnsZone": {
             "type": "string"
         },
         "trafficRoutingMethod": {
@@ -26,7 +26,7 @@
         {
             "apiVersion": "2017-05-01",
             "type": "Microsoft.Network/trafficmanagerprofiles",
-            "name": "[concat(parameters('serviceName'), '.', parameters('dnsName'))]",
+            "name": "[concat(parameters('serviceName'), '.', parameters('dnsZone'))]",
             "location": "global",
             "properties": {
                 "trafficRoutingMethod": "[parameters('trafficRoutingMethod')]",
@@ -42,10 +42,10 @@
                 "endpoints": [
                   {
                     "type": "Microsoft.Network/trafficManagerProfiles/externalEndpoints",
-                      "name": "[concat(parameters('serviceName'), '.westus2.', parameters('dnsName'))]",
+                      "name": "[concat(parameters('serviceName'), '.westus2.', parameters('dnsZone'))]",
                       "properties": {
                           "endpointStatus": "Enabled",
-                          "target": "[concat(parameters('serviceName'), '.westus2.', parameters('dnsName'))]",
+                          "target": "[concat(parameters('serviceName'), '.westus2.', parameters('dnsZone'))]",
                           "endpointLocation": "westus2"
                       }
                   },
@@ -54,12 +54,27 @@
                       "name": "[concat(parameters('serviceName'), '.westus2.', parameters('dnsName'))]",
                       "properties": {
                           "endpointStatus": "Enabled",
-                          "target": "[concat(parameters('serviceName'), '.eastus2.', parameters('dnsName'))]",
+                          "target": "[concat(parameters('serviceName'), '.eastus2.', parameters('dnsZone'))]",
                           "endpointLocation": "eastus2"
                       }
                   }
                 ]
             }
+        },
+        {
+            "type": "Microsoft.Network/dnszones/CNAME",
+            "name": "[concat(parameters('dnsZone'), '/', parameters('serviceName'))]",
+            "apiVersion": "2016-04-01",
+            "scale": null,
+            "properties": {
+                "TTL": 60,
+                "CNAMERecord": {
+                    "cname": "[concat(parameters('relativeName'), '.trafficmanager.net')]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/dnszones', parameters('dnsZone'))]"
+            ]
         }
     ]
 }
