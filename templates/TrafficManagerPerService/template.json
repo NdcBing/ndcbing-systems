@@ -26,7 +26,7 @@
         {
             "apiVersion": "2017-05-01",
             "type": "Microsoft.Network/trafficmanagerprofiles",
-            "name": "[concat(parameters('serviceName'), '.', parameters('dnsZone'))]",
+            "name": "[replace(concat(parameters('serviceName'), '.', parameters('dnsZone')), '.', '-')]",
             "location": "global",
             "properties": {
                 "trafficRoutingMethod": "[parameters('trafficRoutingMethod')]",
